@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-medical-primary: #0ea5e9;
+  --color-medical-secondary: #10b981;
+  --color-medical-accent: #6366f1;
+  --color-medical-background: #f8fafc;
+  --color-medical-card: #ffffff;
+  --color-medical-text: #1e293b;
+  --color-medical-muted: #64748b;
+
+  --shadow-clinical: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 10px -2px rgba(0, 0, 0, 0.03);
+  --shadow-clinical-hover: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 15px -5px rgba(0, 0, 0, 0.04);
+
+  --radius-clinical: 1rem;
+}
+
+@layer base {
+  body {
+    @apply bg-medical-background text-medical-text antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-medical-primary text-white px-6 py-3 rounded-clinical font-medium transition-all hover:brightness-110 active:scale-95 disabled:opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-medical-primary border border-medical-primary/20 px-6 py-3 rounded-clinical font-medium transition-all hover:bg-medical-primary/5 active:scale-95 disabled:opacity-50;
+  }
+
+  .card-clinical {
+    @apply bg-white rounded-clinical shadow-clinical border border-slate-100 p-6 transition-all;
+  }
+
+  .input-clinical {
+    @apply w-full px-4 py-3 rounded-clinical border border-slate-200 focus:outline-none focus:ring-2 focus:ring-medical-primary/20 focus:border-medical-primary transition-all bg-white;
+  }
+}
+
+/* Custom transitions for GSAP */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.modal-backdrop {
+  @apply fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+}
+
+.modal-content {
+  @apply bg-white rounded-clinical shadow-2xl max-w-lg w-full relative z-[51];
+}
